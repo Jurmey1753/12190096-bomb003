@@ -61,7 +61,7 @@ End of assembler dump.
 //Lets check what 0x4025a3 is:
 
 (gdb) x/s 0x4025a3
-0x4025a3:       "%d %d %d %d %d %d"//Must be the format of our answer, which is 6 digits with spaces in between.
+0x4025a3:       "%d %d %d %d %d %d"//The actual formate the format of our answer, which is 6 digits with spaces in between.
 
 
    
@@ -69,7 +69,7 @@ End of assembler dump.
 =>0x000000000040147f <+51>:  jg     0x401486 <read_six_numbers+58>
   0x0000000000401481 <+53>:  call   0x40142a <explode_bomb>    
    
-   //We can see that its probably comparing our input format to the format in %esi. If we have more than 5 digits, aka 6, we can pass
+   //it actually compare the formate of our input whith the formate of %esi. If we have more than 5 digits we can pass
    the explode bomb. Lets see if this works for our "0 1 2 3 4 5":
    
        0x00000000004015e0 <+54>:    jg     0x4015e7 <read_six_numbers+61>
@@ -78,9 +78,9 @@ End of assembler dump.
        0x00000000004015eb <+65>:    retq   
     End of assembler dump.
 
-We pass the bomb! So the format is definitely %d %d %d %d %d %d.
+//We pass the bomb! So the format is definitely %d %d %d %d %d %d.
 
-Lets look at what the compare statement is comparing:
+//Lets look at what the compare statement is comparing:
 gdb) disas
 Dump of assembler code for function phase_2:
    0x0000000000400ea9 <+0>:   push   %rbp
